@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc *)",
+      "Bash(timeout 10 npm run dev)",
+      "Bash(npm run *)",
+      "Bash(kill %1)",
+      "Bash(wait %1)",
+      "Bash(echo \"EXIT:$?\")",
+      "Bash(echo \"TSC_EXIT:$?\")",
+      "Bash(echo \"LINT_EXIT:$?\")"
+    ]
+  }
+}
