@@ -1,0 +1,28 @@
+.app {
+  width: 100%;
+  max-width: 550px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+.app header {
+  padding: 24px 24px 0;
+}
+
+.app header h1 {
+  margin: 0 0 16px;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.app main {
+  padding: 0 24px;
+}
+
+.app footer {
+  padding: 12px 24px;
+  border-top: 1px solid var(--color-border);
+}

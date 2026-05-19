@@ -74,8 +74,8 @@ Track every requirement from the spec. Check off items as they are completed and
 - [x] "Clear completed" button only shows when completed todos exist
 
 ### Step 9 — Layout styles (`src/styles/app.css`)
-- [ ] App centered, max-width ~550px
-- [ ] Card-style container with shadow
+- [x] App centered, max-width ~550px
+- [x] Card-style container with shadow
 
 ### Step 10 — `components/App.tsx` full wiring
 - [ ] Calls `useTodos()` and passes all props/callbacks down
