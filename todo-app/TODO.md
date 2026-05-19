@@ -78,14 +78,14 @@ Track every requirement from the spec. Check off items as they are completed and
 - [x] Card-style container with shadow
 
 ### Step 10 — `components/App.tsx` full wiring
-- [ ] Calls `useTodos()` and passes all props/callbacks down
-- [ ] All CSS files imported here
-- [ ] Footer hidden when todo list is empty
+- [x] Calls `useTodos()` and passes all props/callbacks down
+- [x] All CSS files imported here
+- [x] Footer hidden when todo list is empty
 
 ### Step 11 — `src/App.tsx` re-export shim
-- [ ] Replaced with `export { default } from './components/App'`
-- [ ] Old `App.css` import removed
-- [ ] `App.css` file deleted
+- [x] Replaced with `export { default } from './components/App'`
+- [x] Old `App.css` import removed
+- [x] `App.css` file deleted
 
 ---
 
