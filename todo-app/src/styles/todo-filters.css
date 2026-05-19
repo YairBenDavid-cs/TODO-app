@@ -1,0 +1,45 @@
+.todo-filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  color: var(--color-completed);
+}
+
+.todo-filters__buttons {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.todo-filters__btn {
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  color: inherit;
+  font-size: inherit;
+}
+
+.todo-filters__btn[aria-pressed="true"] {
+  border-color: var(--color-filter-active);
+  color: var(--color-filter-active);
+}
+
+.todo-filters__btn:hover {
+  border-color: var(--color-filter-active);
+}
+
+.todo-filters__clear {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  font-size: inherit;
+  padding: 0;
+}
+
+.todo-filters__clear:hover {
+  text-decoration: underline;
+}

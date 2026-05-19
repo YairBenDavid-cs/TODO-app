@@ -63,15 +63,15 @@ Track every requirement from the spec. Check off items as they are completed and
 - [x] Saving empty text deletes the todo instead
 
 ### Step 7 — `TodoList` component
-- [ ] Renders list of `TodoItem` components
-- [ ] Passes `isEditing={editingId === todo.id}` to each item
-- [ ] Shows empty state message when filtered list is empty
+- [x] Renders list of `TodoItem` components
+- [x] Passes `isEditing={editingId === todo.id}` to each item
+- [x] Shows empty state message when filtered list is empty
 
 ### Step 8 — `TodoFilters` component
-- [ ] Three filter buttons: All / Active / Completed
-- [ ] Active filter button is visually highlighted
-- [ ] Counter shows "N item(s) left" with correct pluralization
-- [ ] "Clear completed" button only shows when completed todos exist
+- [x] Three filter buttons: All / Active / Completed
+- [x] Active filter button is visually highlighted
+- [x] Counter shows "N item(s) left" with correct pluralization
+- [x] "Clear completed" button only shows when completed todos exist
 
 ### Step 9 — Layout styles (`src/styles/app.css`)
 - [ ] App centered, max-width ~550px
