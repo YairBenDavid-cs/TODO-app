@@ -8,7 +8,8 @@
       "Bash(wait %1)",
       "Bash(echo \"EXIT:$?\")",
       "Bash(echo \"TSC_EXIT:$?\")",
-      "Bash(echo \"LINT_EXIT:$?\")"
+      "Bash(echo \"LINT_EXIT:$?\")",
+      "Bash(echo \"exit: $?\")"
     ]
   }
 }

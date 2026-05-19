@@ -47,10 +47,10 @@ Track every requirement from the spec. Check off items as they are completed and
 - [x] `body` and `#root` base styles set
 
 ### Step 5 — `TodoInput` component
-- [ ] Renders a controlled `<input>`
-- [ ] Adds todo on Enter key press
-- [ ] Clears input after adding
-- [ ] Does not add empty/whitespace-only todos
+- [x] Renders a controlled `<input>`
+- [x] Adds todo on Enter key press
+- [x] Clears input after adding
+- [x] Does not add empty/whitespace-only todos
 
 ### Step 6 — `TodoItem` component
 - [ ] Shows checkbox (toggle), text label, delete button

@@ -1,0 +1,19 @@
+.todo-input {
+  width: 100%;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  outline: none;
+  background: transparent;
+  color: inherit;
+}
+
+.todo-input::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+.todo-input:focus {
+  box-shadow: inset 0 -2px 0 var(--color-primary);
+}
