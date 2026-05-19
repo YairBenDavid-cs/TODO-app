@@ -53,14 +53,14 @@ Track every requirement from the spec. Check off items as they are completed and
 - [x] Does not add empty/whitespace-only todos
 
 ### Step 6 — `TodoItem` component
-- [ ] Shows checkbox (toggle), text label, delete button
-- [ ] Completed todos show strikethrough text
-- [ ] Double-click on label starts inline edit
-- [ ] Edit input pre-filled with current text and auto-focused
-- [ ] Enter saves the edit
-- [ ] Escape cancels the edit
-- [ ] Blur saves the edit (with race condition guard)
-- [ ] Saving empty text deletes the todo instead
+- [x] Shows checkbox (toggle), text label, delete button
+- [x] Completed todos show strikethrough text
+- [x] Double-click on label starts inline edit
+- [x] Edit input pre-filled with current text and auto-focused
+- [x] Enter saves the edit
+- [x] Escape cancels the edit
+- [x] Blur saves the edit (with race condition guard)
+- [x] Saving empty text deletes the todo instead
 
 ### Step 7 — `TodoList` component
 - [ ] Renders list of `TodoItem` components
