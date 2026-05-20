@@ -3,22 +3,36 @@ import type { Todo } from '../types/todo';
 
 interface TodoItemProps {
   todo: Todo;
+  index: number;
   isEditing: boolean;
   onToggle: (id: string) => void;
   onDelete: (id: string) => void;
   onStartEdit: (id: string) => void;
   onSaveEdit: (id: string, text: string) => void;
   onCancelEdit: () => void;
+  onDragStart?: (index: number) => void;
+  onDragOver?: (e: React.DragEvent<HTMLLIElement>, index: number) => void;
+  onDrop?: (index: number) => void;
+  onDragEnd?: () => void;
+  isDragging?: boolean;
+  isDragOver?: boolean;
 }
 
 function TodoItem({
   todo,
+  index,
   isEditing,
   onToggle,
   onDelete,
   onStartEdit,
   onSaveEdit,
   onCancelEdit,
+  onDragStart,
+  onDragOver,
+  onDrop,
+  onDragEnd,
+  isDragging,
+  isDragOver,
 }: TodoItemProps): React.JSX.Element {
   const [editValue, setEditValue] = useState<string>(todo.text);
   const [prevIsEditing, setPrevIsEditing] = useState<boolean>(false);
@@ -50,8 +64,26 @@ function TodoItem({
     }
   }
 
+  const isDragEnabled = onDragStart !== undefined;
+
+  const classNames = [
+    'todo-item',
+    todo.completed ? 'todo-item--completed' : '',
+    isDragging ? 'todo-item--dragging' : '',
+    isDragOver ? 'todo-item--drag-over' : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
+
   return (
-    <li className={`todo-item${todo.completed ? ' todo-item--completed' : ''}`}>
+    <li
+      className={classNames}
+      draggable={isDragEnabled && !isEditing}
+      onDragStart={isDragEnabled ? () => onDragStart(index) : undefined}
+      onDragOver={onDragOver ? (e) => onDragOver(e, index) : undefined}
+      onDrop={onDrop ? () => onDrop(index) : undefined}
+      onDragEnd={onDragEnd}
+    >
       {isEditing ? (
         <input
           ref={editInputRef}
@@ -64,6 +96,9 @@ function TodoItem({
         />
       ) : (
         <>
+          {isDragEnabled && (
+            <span className="todo-item__drag-handle" aria-hidden="true" />
+          )}
           <input
             type="checkbox"
             className="todo-item__checkbox"

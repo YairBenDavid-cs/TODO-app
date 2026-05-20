@@ -105,3 +105,34 @@
   color: var(--danger);
   background: var(--danger-muted);
 }
+
+/* Six-dot drag handle rendered as a dot grid via CSS */
+.todo-item__drag-handle {
+  width: 10px;
+  height: 18px;
+  flex-shrink: 0;
+  background-image: radial-gradient(circle, var(--text-muted) 1.5px, transparent 1.5px);
+  background-size: 5px 6px;
+  background-repeat: repeat;
+  cursor: grab;
+  opacity: 0;
+  transition: opacity 0.18s;
+}
+
+.todo-item__drag-handle:active {
+  cursor: grabbing;
+}
+
+.todo-item:hover .todo-item__drag-handle {
+  opacity: 1;
+}
+
+/* Source item fades while being dragged */
+.todo-item--dragging {
+  opacity: 0.35;
+}
+
+/* Accent line above the drop target */
+.todo-item--drag-over {
+  border-top: 2px solid var(--accent);
+}

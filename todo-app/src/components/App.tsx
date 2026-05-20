@@ -24,6 +24,7 @@ export default function App(): React.JSX.Element {
     deleteTodo,
     updateTodoText,
     clearCompleted,
+    reorderTodos,
   } = useTodos();
 
   return (
@@ -44,6 +45,7 @@ export default function App(): React.JSX.Element {
           onStartEdit={setEditingId}
           onSaveEdit={updateTodoText}
           onCancelEdit={() => setEditingId(null)}
+          onReorder={activeFilter === 'all' ? reorderTodos : undefined}
         />
       </main>
       {todos.length > 0 && (

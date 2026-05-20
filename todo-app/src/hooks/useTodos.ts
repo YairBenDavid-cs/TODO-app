@@ -16,6 +16,7 @@ interface UseTodosReturn {
   deleteTodo: (id: string) => void;
   updateTodoText: (id: string, text: string) => void;
   clearCompleted: () => void;
+  reorderTodos: (fromIndex: number, toIndex: number) => void;
 }
 
 function useTodos(): UseTodosReturn {
@@ -52,9 +53,14 @@ function useTodos(): UseTodosReturn {
   }
 
   function toggleTodo(id: string): void {
-    setTodos((prev) =>
-      prev.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t))
-    );
+    setTodos((prev) => {
+      const index = prev.findIndex((t) => t.id === id);
+      if (index === -1) return prev;
+      const updated = prev.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t));
+      const [moved] = updated.splice(index, 1);
+      updated.push(moved);
+      return updated;
+    });
   }
 
   function deleteTodo(id: string): void {
@@ -78,6 +84,16 @@ function useTodos(): UseTodosReturn {
     setTodos((prev) => prev.filter((t) => !t.completed));
   }
 
+  function reorderTodos(fromIndex: number, toIndex: number): void {
+    if (fromIndex === toIndex) return;
+    setTodos((prev) => {
+      const updated = [...prev];
+      const [moved] = updated.splice(fromIndex, 1);
+      updated.splice(toIndex, 0, moved);
+      return updated;
+    });
+  }
+
   return {
     todos,
     filteredTodos,
@@ -92,6 +108,7 @@ function useTodos(): UseTodosReturn {
     deleteTodo,
     updateTodoText,
     clearCompleted,
+    reorderTodos,
   };
 }
 
