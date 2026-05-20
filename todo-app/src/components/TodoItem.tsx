@@ -21,14 +21,21 @@ function TodoItem({
   onCancelEdit,
 }: TodoItemProps): React.JSX.Element {
   const [editValue, setEditValue] = useState<string>(todo.text);
+  const [prevIsEditing, setPrevIsEditing] = useState<boolean>(false);
   const editInputRef = useRef<HTMLInputElement>(null);
+
+  if (prevIsEditing !== isEditing) {
+    setPrevIsEditing(isEditing);
+    if (isEditing) {
+      setEditValue(todo.text);
+    }
+  }
 
   useEffect(() => {
     if (isEditing) {
-      setEditValue(todo.text);
       editInputRef.current?.focus();
     }
-  }, [isEditing, todo.text]);
+  }, [isEditing]);
 
   function handleBlur(): void {
     if (!isEditing) return;

@@ -13,7 +13,7 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, Dispatch<SetState
   useEffect(() => {
     try {
       window.localStorage.setItem(key, JSON.stringify(storedValue));
-    } catch {}
+    } catch { /* ignore localStorage write errors (e.g. quota exceeded, private browsing) */ }
   }, [key, storedValue]);
 
   return [storedValue, setStoredValue];

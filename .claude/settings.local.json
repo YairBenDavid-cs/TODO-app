@@ -10,7 +10,8 @@
       "Bash(echo \"TSC_EXIT:$?\")",
       "Bash(echo \"LINT_EXIT:$?\")",
       "Bash(echo \"exit: $?\")",
-      "Bash(xxd /Users/yairbendavid/Desktop/project1-TODO-app/todo-app/src/components/App.tsx)"
+      "Bash(xxd /Users/yairbendavid/Desktop/project1-TODO-app/todo-app/src/components/App.tsx)",
+      "Bash(grep -E \"\\\\.\\(ts|tsx|json|html\\)$\")"
     ]
   }
 }
