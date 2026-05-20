@@ -11,7 +11,14 @@
       "Bash(echo \"LINT_EXIT:$?\")",
       "Bash(echo \"exit: $?\")",
       "Bash(xxd /Users/yairbendavid/Desktop/project1-TODO-app/todo-app/src/components/App.tsx)",
-      "Bash(grep -E \"\\\\.\\(ts|tsx|json|html\\)$\")"
+      "Bash(grep -E \"\\\\.\\(ts|tsx|json|html\\)$\")",
+      "Bash(curl -s http://localhost:5199)",
+      "Bash(npx --yes playwright --version)",
+      "Bash(npx playwright *)",
+      "Bash(npm install *)",
+      "Bash(cp /tmp/verify-ui.mjs /Users/yairbendavid/Desktop/project1-TODO-app/todo-app/verify-ui.mjs)",
+      "Bash(node verify-ui.mjs)",
+      "Bash(pkill -f \"vite --port 5199\")"
     ]
   }
 }

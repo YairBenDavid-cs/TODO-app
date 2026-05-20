@@ -7,22 +7,29 @@ interface TodoInputProps {
 export default function TodoInput({ onAdd }: TodoInputProps): React.JSX.Element {
   const [inputValue, setInputValue] = useState<string>('');
 
-  function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>): void {
-    if (e.key !== 'Enter') return;
+  function handleAdd(): void {
     const trimmed = inputValue.trim();
     if (!trimmed) return;
     onAdd(trimmed);
     setInputValue('');
   }
 
+  function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>): void {
+    if (e.key !== 'Enter') return;
+    handleAdd();
+  }
+
   return (
-    <input
-      className="todo-input"
-      type="text"
-      placeholder="What needs to be done?"
-      value={inputValue}
-      onChange={(e) => setInputValue(e.target.value)}
-      onKeyDown={handleKeyDown}
-    />
+    <div className="todo-input-wrapper">
+      <span className="todo-input__prefix" aria-hidden="true">›</span>
+      <input
+        className="todo-input"
+        type="text"
+        placeholder="What needs to be done?"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+        onKeyDown={handleKeyDown}
+      />
+    </div>
   );
 }
