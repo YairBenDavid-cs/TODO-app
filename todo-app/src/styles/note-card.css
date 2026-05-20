@@ -1,0 +1,90 @@
+.note-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  width: 340px;
+  flex-shrink: 0;
+}
+
+.note-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 14px 16px 12px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.note-card__title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  cursor: default;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.note-card__title-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--accent);
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 700;
+  outline: none;
+  padding: 2px 2px;
+  min-width: 0;
+}
+
+.note-card__delete {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 1.3rem;
+  line-height: 1;
+  padding: 0 2px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+
+.note-card__delete:hover {
+  color: var(--danger);
+}
+
+/* ── Scoped overrides: TodoInput inside a card ── */
+.note-card .todo-input-wrapper {
+  margin: 10px 12px;
+}
+
+/* ── Scoped overrides: TodoFilters inside a card ── */
+/* The default .todo-filters is sized for the 580px app container.
+   Counter + buttons fit on one row (≈280px < 316px card inner width).
+   "Clear completed" is too wide to share that row, so give it its own row. */
+.note-card .todo-filters {
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 8px 12px 10px;
+  gap: 4px 0;
+}
+
+.note-card .todo-filters__counter {
+  min-width: 0;
+}
+
+.note-card .todo-filters__btn {
+  padding: 5px 10px;
+}
+
+/* Always occupies a dedicated second row — no layout shift on row 1 */
+.note-card .todo-filters__clear {
+  flex: 0 0 100%;
+  min-width: 0;
+  padding: 2px 6px 4px;
+  text-align: center;
+}

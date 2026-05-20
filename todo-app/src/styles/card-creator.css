@@ -1,0 +1,26 @@
+.card-creator {
+  display: flex;
+  gap: 10px;
+  padding: 0 0 24px;
+}
+
+.card-creator__input {
+  flex: 1;
+  padding: 10px 14px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.card-creator__input::placeholder {
+  color: var(--text-dim);
+}
+
+.card-creator__input:focus {
+  border-color: var(--accent);
+}
+

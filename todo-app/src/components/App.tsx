@@ -4,28 +4,23 @@ import '../styles/todo-input.css';
 import '../styles/todo-list.css';
 import '../styles/todo-item.css';
 import '../styles/todo-filters.css';
-import useTodos from '../hooks/useTodos';
-import TodoInput from './TodoInput';
-import TodoList from './TodoList';
-import TodoFilters from './TodoFilters';
+import '../styles/card-creator.css';
+import '../styles/note-card.css';
+import '../styles/card-grid.css';
+import useCards from '../hooks/useCards';
+import CardCreator from './CardCreator';
+import CardGrid from './CardGrid';
 
 export default function App(): React.JSX.Element {
   const {
-    todos,
-    filteredTodos,
-    activeCount,
-    completedCount,
-    activeFilter,
-    editingId,
-    setFilter,
-    setEditingId,
-    addTodo,
-    toggleTodo,
-    deleteTodo,
-    updateTodoText,
-    clearCompleted,
-    reorderTodos,
-  } = useTodos();
+    cards,
+    editingCardTitleId,
+    setEditingCardTitleId,
+    addCard,
+    deleteCard,
+    updateCardTitle,
+    updateCardTodos,
+  } = useCards();
 
   return (
     <div className="app">
@@ -34,31 +29,18 @@ export default function App(): React.JSX.Element {
           <h1>Todos</h1>
         </div>
         <p className="app-subtitle">Stay focused. Ship fast.</p>
-        <TodoInput onAdd={addTodo} />
+        <CardCreator onAdd={addCard} />
       </header>
       <main>
-        <TodoList
-          todos={filteredTodos}
-          editingId={editingId}
-          onToggle={toggleTodo}
-          onDelete={deleteTodo}
-          onStartEdit={setEditingId}
-          onSaveEdit={updateTodoText}
-          onCancelEdit={() => setEditingId(null)}
-          onReorder={activeFilter === 'all' ? reorderTodos : undefined}
+        <CardGrid
+          cards={cards}
+          editingCardTitleId={editingCardTitleId}
+          onSetEditingCardTitle={setEditingCardTitleId}
+          onUpdateCardTitle={updateCardTitle}
+          onDeleteCard={deleteCard}
+          onUpdateCardTodos={updateCardTodos}
         />
       </main>
-      {todos.length > 0 && (
-        <footer>
-          <TodoFilters
-            activeFilter={activeFilter}
-            activeCount={activeCount}
-            completedCount={completedCount}
-            onFilterChange={setFilter}
-            onClearCompleted={clearCompleted}
-          />
-        </footer>
-      )}
     </div>
   );
 }

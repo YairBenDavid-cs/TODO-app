@@ -1,9 +1,7 @@
 import { useState, useMemo } from 'react';
-import useLocalStorage from './useLocalStorageTodos';
 import type { Todo, Filter } from '../types/todo';
 
-interface UseTodosReturn {
-  todos: Todo[];
+interface UseCardTodosReturn {
   filteredTodos: Todo[];
   activeCount: number;
   completedCount: number;
@@ -19,8 +17,11 @@ interface UseTodosReturn {
   reorderTodos: (fromIndex: number, toIndex: number) => void;
 }
 
-function useTodos(): UseTodosReturn {
-  const [todos, setTodos] = useLocalStorage<Todo[]>('todos', []);
+function useCardTodos(
+  cardId: string,
+  todos: Todo[],
+  onUpdate: (cardId: string, todos: Todo[]) => void
+): UseCardTodosReturn {
   const [activeFilter, setFilter] = useState<Filter>('all');
   const [editingId, setEditingId] = useState<string | null>(null);
 
@@ -49,22 +50,27 @@ function useTodos(): UseTodosReturn {
       completed: false,
       createdAt: Date.now(),
     };
-    setTodos((prev) => [...prev, newTodo]);
+    const firstCompletedIndex = todos.findIndex((t) => t.completed);
+    if (firstCompletedIndex === -1) {
+      onUpdate(cardId, [...todos, newTodo]);
+    } else {
+      const updated = [...todos];
+      updated.splice(firstCompletedIndex, 0, newTodo);
+      onUpdate(cardId, updated);
+    }
   }
 
   function toggleTodo(id: string): void {
-    setTodos((prev) => {
-      const index = prev.findIndex((t) => t.id === id);
-      if (index === -1) return prev;
-      const updated = prev.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t));
-      const [moved] = updated.splice(index, 1);
-      updated.push(moved);
-      return updated;
-    });
+    const index = todos.findIndex((t) => t.id === id);
+    if (index === -1) return;
+    const updated = todos.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t));
+    const [moved] = updated.splice(index, 1);
+    updated.push(moved);
+    onUpdate(cardId, updated);
   }
 
   function deleteTodo(id: string): void {
-    setTodos((prev) => prev.filter((t) => t.id !== id));
+    onUpdate(cardId, todos.filter((t) => t.id !== id));
     setEditingId((current) => (current === id ? null : current));
   }
 
@@ -73,29 +79,24 @@ function useTodos(): UseTodosReturn {
     if (!trimmed) {
       deleteTodo(id);
       return;
-    } 
-    setTodos((prev) =>
-        prev.map((t) => (t.id === id ? { ...t, text: trimmed } : t))
-      );
+    }
+    onUpdate(cardId, todos.map((t) => (t.id === id ? { ...t, text: trimmed } : t)));
     setEditingId(null);
   }
 
   function clearCompleted(): void {
-    setTodos((prev) => prev.filter((t) => !t.completed));
+    onUpdate(cardId, todos.filter((t) => !t.completed));
   }
 
   function reorderTodos(fromIndex: number, toIndex: number): void {
     if (fromIndex === toIndex) return;
-    setTodos((prev) => {
-      const updated = [...prev];
-      const [moved] = updated.splice(fromIndex, 1);
-      updated.splice(toIndex, 0, moved);
-      return updated;
-    });
+    const updated = [...todos];
+    const [moved] = updated.splice(fromIndex, 1);
+    updated.splice(toIndex, 0, moved);
+    onUpdate(cardId, updated);
   }
 
   return {
-    todos,
     filteredTodos,
     activeCount,
     completedCount,
@@ -112,4 +113,4 @@ function useTodos(): UseTodosReturn {
   };
 }
 
-export default useTodos;
+export default useCardTodos;

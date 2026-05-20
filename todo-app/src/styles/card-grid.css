@@ -1,0 +1,14 @@
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0 32px 40px;
+}
+
+.card-grid__empty {
+  padding: 48px 32px;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  text-align: center;
+  width: 100%;
+}

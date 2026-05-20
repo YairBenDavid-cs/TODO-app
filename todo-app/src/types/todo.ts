@@ -6,3 +6,10 @@ export interface Todo {
 }
 
 export type Filter = 'all' | 'active' | 'completed';
+
+export interface TodoCard {
+  id: string;
+  title: string;
+  todos: Todo[];
+  createdAt: number;
+}

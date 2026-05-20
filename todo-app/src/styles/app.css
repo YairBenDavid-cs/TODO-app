@@ -1,26 +1,5 @@
 .app {
   width: 100%;
-  max-width: 580px;
-  background: var(--bg-card);
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  box-shadow:
-    0 0 0 1px rgba(108, 99, 255, 0.08),
-    0 32px 80px rgba(0, 0, 0, 0.65);
-  overflow: hidden;
-  position: relative;
-}
-
-/* Top accent line */
-.app::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent 0%, var(--accent) 25%, var(--accent-cyan) 75%, transparent 100%);
-  z-index: 1;
 }
 
 .app header {
@@ -55,8 +34,4 @@
 
 .app main {
   padding: 0;
-}
-
-.app footer {
-  border-top: 1px solid var(--border-subtle);
 }
