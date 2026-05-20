@@ -33,7 +33,7 @@ export default function App(): React.JSX.Element {
         <div className="app-title">
           <h1>Todos</h1>
         </div>
-        <p className="app-subtitle">Stay focused. Ship it.</p>
+        <p className="app-subtitle">Stay focused. Ship fast.</p>
         <TodoInput onAdd={addTodo} />
       </header>
       <main>
